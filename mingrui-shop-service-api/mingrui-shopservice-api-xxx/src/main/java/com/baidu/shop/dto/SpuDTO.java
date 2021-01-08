@@ -42,16 +42,20 @@ public class SpuDTO extends BaseDTO {
     @NotNull(message = "商品所属品牌id不能为空",groups = {MingruiOperation.Add.class})
     private Integer brandId;
 
-    @ApiModelProperty(value = "是否上架，0下架，1上架", example = "1")
+    @ApiModelProperty(value = "是否上架", example = "1")
+    @NotNull(message = "是否上架不能为空",groups = {MingruiOperation.Update.class,MingruiOperation.Add.class})
     private Integer saleable;
 
-    @ApiModelProperty(value = "是否有效，0已删除，1有效", example = "1")
+    @ApiModelProperty(value = "是否有效", example = "1")
+    @NotNull(message = "是否有效不能为空",groups = {MingruiOperation.Add.class,MingruiOperation.Update.class})
     private Integer valid;
 
     @ApiModelProperty(value = "创建时间")
+    @NotNull(message = "创建时间不能为空",groups = {MingruiOperation.Add.class,MingruiOperation.Update.class})
     private Date createTime;
 
     @ApiModelProperty(value = "最后修改的时间")
+    @NotNull(message = "最后修改时间不能为空",groups = {MingruiOperation.Update.class})
     private Date lastUpdateTime;
 
     private String categoryName;

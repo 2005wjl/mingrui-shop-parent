@@ -9,9 +9,8 @@ import com.baidu.shop.entity.SpuDetailEntity;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import lombok.Data;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -33,4 +32,20 @@ public interface GoodsService {
     @ApiOperation(value="通过spuId查询sku的信息")
     @GetMapping(value="goods/listSkusBySpuId")
     Result<List<SkuDTO>> SkusBySpuId(Integer spuId);
+
+    @ApiOperation(value="修改商品")
+    @PutMapping(value="goods/save")
+    Result<JSONObject> updateGoods(@RequestBody SpuDTO spuDTO);
+
+    @ApiOperation(value="删除商品")
+    @DeleteMapping(value="goods/delete")
+    Result<JSONObject> deleteGoods(Integer spuId);
+
+    @ApiOperation(value="下架商品")
+    @PutMapping(value="goods/down")
+    Result<JSONObject> downGoods(@RequestBody SpuDTO spuDTO);
+
+    @ApiOperation(value="上架商品")
+    @PutMapping(value="goods/up")
+    Result<JSONObject> upGoods(@RequestBody SpuDTO spuDTO);
 }

@@ -25,6 +25,7 @@ public class BrandDTO extends BaseDTO {
     private String image;
 
     @ApiModelProperty(value="品牌首字母")
+    @NotEmpty(message = "品牌首字母不能为空",groups = {MingruiOperation.Add.class,MingruiOperation.Update.class})
     private Character letter;
 
     @ApiModelProperty(value="品牌id的集合")

@@ -20,7 +20,7 @@ public class SkuEntity {
 
     private String title;
 
-    private String image;
+    private String images;
 
     private Integer price;
 

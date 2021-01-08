@@ -25,11 +25,11 @@ public class CategoryEntity {
     @NotEmpty(message = "类目名称不能为空",groups = {MingruiOperation.Add.class,MingruiOperation.Update.class})
     private String name;
 
-    @ApiModelProperty(value="父类目id,顶级类目填0",example = "1")
+    @ApiModelProperty(value="父类目id",example = "1")
     @NotNull(message = "父类名不能为空",groups = {MingruiOperation.Add.class})
     private Integer parentId;
 
-    @ApiModelProperty(value="是否为父节点，0为否，1为是",example = "1")
+    @ApiModelProperty(value="是否为父节点",example = "1")
     @NotNull(message = "父类名不能为空",groups = {MingruiOperation.Add.class})
     private Integer isParent;
 
