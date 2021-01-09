@@ -65,11 +65,6 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
         return this.setResultSuccess("下架成功");
     }
 
-    private void upDownGoods(SpuDTO spuDTO,Integer t){
-        SpuEntity spuEntity = BaiduBeanUtil.copyProperties(spuDTO,SpuEntity.class);
-        spuEntity.setSaleable(t);
-        spuMapper.updateByPrimaryKeySelective(spuEntity);
-    }
 
     @Override
     @Transactional
@@ -129,8 +124,6 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
         final Date date = new Date();
         //新增spu
         SpuEntity spuEntity = BaiduBeanUtil.copyProperties(spuDTO,SpuEntity.class);
-
-
 
         spuEntity.setSaleable(1);
         spuEntity.setValid(1);
@@ -218,5 +211,11 @@ public class GoodsServiceImpl extends BaseApiService implements GoodsService {
         List<Long> list =   sku.stream().map(skuEntity -> skuEntity.getId()).collect(Collectors.toList());
         skuMapper.deleteByIdList(list);
         stockMapper.deleteByIdList(list);
+    }
+
+    private void upDownGoods(SpuDTO spuDTO,Integer t){
+        SpuEntity spuEntity = BaiduBeanUtil.copyProperties(spuDTO,SpuEntity.class);
+        spuEntity.setSaleable(t);
+        spuMapper.updateByPrimaryKeySelective(spuEntity);
     }
 }

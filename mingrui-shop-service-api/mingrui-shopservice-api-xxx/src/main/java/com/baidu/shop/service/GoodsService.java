@@ -6,10 +6,12 @@ import com.baidu.shop.dto.SkuDTO;
 import com.baidu.shop.dto.SpuDTO;
 
 import com.baidu.shop.entity.SpuDetailEntity;
+import com.baidu.shop.validate.group.MingruiOperation;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.Data;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,7 +25,7 @@ public interface GoodsService {
 
     @ApiOperation(value="新增商品")
     @PostMapping(value="goods/save")
-    Result<JSONObject> saveGoods(@RequestBody SpuDTO spuDTO);
+    Result<JSONObject> saveGoods(@Validated({MingruiOperation.Add.class})@RequestBody SpuDTO spuDTO);
 
     @ApiOperation(value="通过spuId查询spuDetail的信息")
     @GetMapping(value="goods/listSpuDetailBySpuId")
@@ -35,7 +37,7 @@ public interface GoodsService {
 
     @ApiOperation(value="修改商品")
     @PutMapping(value="goods/save")
-    Result<JSONObject> updateGoods(@RequestBody SpuDTO spuDTO);
+    Result<JSONObject> updateGoods(@Validated({MingruiOperation.Update.class})@RequestBody SpuDTO spuDTO);
 
     @ApiOperation(value="删除商品")
     @DeleteMapping(value="goods/delete")

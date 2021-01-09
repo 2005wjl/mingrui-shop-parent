@@ -6,8 +6,10 @@ import com.baidu.shop.dto.SpecGroupDTO;
 import com.baidu.shop.dto.SpecParamDTO;
 import com.baidu.shop.entity.SpecGroupEntity;
 import com.baidu.shop.entity.SpecParamEntity;
+import com.baidu.shop.validate.group.MingruiOperation;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,11 +23,11 @@ public interface SpecificationService {
 
     @ApiOperation(value="新增规格组")
     @PostMapping(value="spec/save")
-    Result<JSONObject> saveSecpgroup(@RequestBody SpecGroupDTO specGroupDTO);
+    Result<JSONObject> saveSecpgroup(@Validated({MingruiOperation.Add.class})@RequestBody SpecGroupDTO specGroupDTO);
 
     @ApiOperation(value="修改规格组")
     @PutMapping(value="spec/save")
-    Result<JSONObject> editSecpgroup(@RequestBody SpecGroupDTO specGroupDTO);
+    Result<JSONObject> editSecpgroup(@Validated({MingruiOperation.Update.class})@RequestBody SpecGroupDTO specGroupDTO);
 
     @ApiOperation(value = "删除规格组")
     @DeleteMapping(value = "spec/delete/{id}")
@@ -37,11 +39,11 @@ public interface SpecificationService {
 
     @ApiOperation(value="新增规格的参数")
     @PostMapping(value="param/save")
-    Result<JSONObject> saveParam(@RequestBody SpecParamDTO specParamDTO);
+    Result<JSONObject> saveParam(@Validated({MingruiOperation.Add.class})@RequestBody SpecParamDTO specParamDTO);
 
     @ApiOperation(value="修改规格的参数")
     @PutMapping(value="param/save")
-    Result<JSONObject> editParam(@RequestBody SpecParamDTO specParamDTO);
+    Result<JSONObject> editParam(@Validated({MingruiOperation.Update.class})@RequestBody SpecParamDTO specParamDTO);
 
     @ApiOperation(value="删除规格参数")
     @DeleteMapping(value="param/delete")

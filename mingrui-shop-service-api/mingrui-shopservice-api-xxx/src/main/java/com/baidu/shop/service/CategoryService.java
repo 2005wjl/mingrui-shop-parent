@@ -24,7 +24,7 @@ public interface CategoryService {
 
     @ApiOperation(value="通过id修改")
     @PutMapping(value="category/enit")
-    Result<JsonObject> enitCatgory(@RequestBody CategoryEntity categoryEntity);
+    Result<JsonObject> enitCatgory(@Validated({MingruiOperation.Update.class})@RequestBody CategoryEntity categoryEntity);
 
     @ApiOperation(value="新增")
     @PostMapping(value="category/save")
